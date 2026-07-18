@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07152d" />
+  <meta name="description" content="まゆに会える日までを、世界地図と一緒に数えるカウントダウンアプリ。" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Until Mayu" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
+<title>Until Mayu</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-bg" aria-hidden="true">
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="stars"></div>
+  </div>
+
+  <main class="app" id="app">
+    <section class="screen screen-home is-active" id="homeScreen" aria-labelledby="appTitle">
+      <header class="home-header">
+        <div class="title-wrap">
+          <p class="kicker">LONG DISTANCE, ONE DESTINATION</p>
+          <h1 id="appTitle">Until <span id="headerPartnerName">Mayu</span></h1>
+          <p class="subtitle"><span id="subtitlePartnerName">まゆ</span>に会えるまで</p>
+        </div>
+        <button class="round-button" id="openSettingsButton" type="button" aria-label="設定を開く">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/><path d="M19 13.2c.04-.4.04-.8 0-1.2l2-1.55-1.9-3.3-2.5 1a8.2 8.2 0 0 0-1.05-.6L15.2 5h-3.8l-.35 2.55c-.37.17-.72.37-1.05.6l-2.5-1-1.9 3.3 2 1.55c-.04.4-.04.8 0 1.2l-2 1.55 1.9 3.3 2.5-1c.33.23.68.43 1.05.6l.35 2.55h3.8l.35-2.55c.37-.17.72-.37 1.05-.6l2.5 1 1.9-3.3-2-1.55Z"/></svg>
+        </button>
+      </header>
+
+      <section class="countdown-block" aria-live="polite">
+        <p class="countdown-label">再会まであと</p>
+        <div class="days-line"><strong id="days">100</strong><span>日</span></div>
+        <div class="sub-countdown">
+          <div><strong id="hours">00</strong><span>時間</span></div>
+          <i></i>
+          <div><strong id="minutes">00</strong><span>分</span></div>
+          <i></i>
+          <div><strong id="seconds">00</strong><span>秒</span></div>
+        </div>
+        <p class="reunion-moment" id="reunionMoment">2026年11月24日 14:00 JST</p>
+      </section>
+
+      <section class="map-panel" aria-labelledby="routeTitle">
+        <div class="map-heading">
+          <div>
+            <p>OUR DISTANCE</p>
+            <h2 id="routeTitle">京都からデュッセルドルフへ</h2>
+          </div>
+          <div class="route-stats">
+            <div class="distance-pill"><span></span><strong>約 9,212 km</strong></div>
+            <div class="distance-pill time-difference-pill"><span></span><strong id="timeDifferenceText">時差を計算中</strong></div>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <svg class="world-map" viewBox="0 0 1000 500" role="img" aria-label="京都とデュッセルドルフを結ぶ世界地図">
+            <defs>
+              <linearGradient id="routeGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffb0bd" />
+                <stop offset=".55" stop-color="#f6d0c8" />
+                <stop offset="1" stop-color="#9ebcff" />
+              </linearGradient>
+              <radialGradient id="dotGradient">
+                <stop offset="0" stop-color="#fff" />
+                <stop offset="1" stop-color="#ff8fa6" />
+              </radialGradient>
+              <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="smallGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <clipPath id="mapClip"><rect width="1000" height="500" rx="42" /></clipPath>
+            </defs>
+
+            <g clip-path="url(#mapClip)">
+              <rect width="1000" height="500" fill="transparent" />
+              <g class="map-grid">
+                <path d="M0 100h1000M0 200h1000M0 300h1000M0 400h1000"/>
+                <path d="M125 0v500M250 0v500M375 0v500M500 0v500M625 0v500M750 0v500M875 0v500"/>
+              </g>
+              <g class="continents">
+                <path d="M55 108 89 77l48-18 70 8 35 29 41 7 29 39-9 33-37 9-18 38-29 25-3 38-29 12-28-35-31-13-14-43-42-21-24-38Z"/>
+                <path d="m258 265 35 23 20 48 19 20-9 48-30 50-20-19-9-61-26-42Z"/>
+                <path d="m449 99 37-18 30 13 15 29 43-9 35 18 44-10 36 8 42-16 71 21 56 35-17 22-43 2-23 27-34-6-19 28-40 4-31-25-33 11-13 33-27-6-17-28-42-4-18-28-31-1-19-25-24-10Z"/>
+                <path d="m493 222 54 2 34 26 7 52-27 71-41 25-29-22-9-49-27-35 7-49Z"/>
+                <path d="m741 330 38-20 49 11 36 30-7 38-39 22-57-14-29-35Z"/>
+                <path d="m864 176 22-7 16 20-17 17-26-7Z"/>
+                <path d="m587 117 18-24 21 8-8 30Z"/>
+              </g>
+              <g class="city-lights" aria-hidden="true">
+                <circle cx="506" cy="126" r="2"/><circle cx="520" cy="118" r="1.5"/><circle cx="531" cy="132" r="1.8"/>
+                <circle cx="613" cy="147" r="1.4"/><circle cx="640" cy="161" r="2"/><circle cx="703" cy="183" r="1.6"/>
+                <circle cx="862" cy="160" r="1.7"/><circle cx="878" cy="153" r="2"/><circle cx="899" cy="168" r="1.3"/>
+                <circle cx="106" cy="145" r="1.8"/><circle cx="147" cy="128" r="1.3"/><circle cx="185" cy="158" r="1.6"/>
+              </g>
+
+              <path class="route-shadow" d="M878 157 C 793 12, 626 26, 520 111" />
+              <path class="route-line" id="routePath" d="M878 157 C 793 12, 626 26, 520 111" />
+
+              <g class="plane" aria-hidden="true">
+                <path d="m0-7 4.3 5.2 8.2 2.5c.8.2.8 1.3 0 1.5L4.3 3.7 0 9l-1.3-.4 1.7-5.3-5.5 1.6-2.8 3.5-1.2-.3 1.2-4.8-4.9-1.5c-.7-.2-.7-1.3 0-1.5l4.9-1.5-1.2-4.8 1.2-.3 2.8 3.5L.4-1.3-1.3-6.6Z"/>
+                <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M878 157 C 793 12, 626 26, 520 111" />
+              </g>
+
+              <g class="map-pin map-pin-japan" transform="translate(878 157)">
+                <circle class="pin-wave" r="19" />
+                <circle class="pin-glow" r="10" />
+                <circle class="pin-dot" r="5" />
+              </g>
+              <g class="map-pin map-pin-germany" transform="translate(520 111)">
+                <circle class="pin-wave" r="19" />
+                <circle class="pin-glow" r="10" />
+                <circle class="pin-dot" r="5" />
+              </g>
+            </g>
+          </svg>
+
+          <div class="location-label location-germany">
+            <span>MAYU</span><strong>Düsseldorf</strong>
+          </div>
+          <div class="location-label location-japan">
+            <span>YOU</span><strong>Kyoto</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="clock-grid" aria-label="ふたりの現地時刻">
+        <button class="city-card city-card-kyoto" id="kyotoCard" type="button">
+          <span class="city-heart">♥</span>
+          <div class="city-card-top"><span>京都</span><small id="kyotoDayState">昼</small></div>
+          <strong id="kyotoTime">--:--</strong>
+          <p id="kyotoDate">--月--日</p>
+          <p class="timezone-meta" id="kyotoZone">JST · UTC+9</p>
+          <svg class="city-art kyoto-art" viewBox="0 0 180 72" aria-hidden="true"><path d="M0 66h180M18 66V48h18v18M23 48l4-10 4 10M44 66V35h20v31M49 35l5-14 5 14M78 66V43h22v23M84 43l5-13 5 13M111 66V50h18v16M116 50l4-9 4 9M142 66V39h17v27M146 39l5-12 5 12"/><path d="M10 55c11-11 21-12 32-2M126 56c16-15 30-14 45 0"/></svg>
+        </button>
+
+        <button class="city-card city-card-dusseldorf" id="dusseldorfCard" type="button">
+          <span class="city-heart">♥</span>
+          <div class="city-card-top"><span>デュッセルドルフ</span><small id="dusseldorfDayState">夜</small></div>
+          <strong id="dusseldorfTime">--:--</strong>
+          <p id="dusseldorfDate">--月--日</p>
+          <p class="timezone-meta" id="dusseldorfZone">CEST · UTC+2</p>
+          <svg class="city-art dusseldorf-art" viewBox="0 0 180 72" aria-hidden="true"><path d="M0 66h180M14 66V49h16v17M36 66V44h18v22M62 66V50h20v16M91 66V42h21v24M124 66V48h17v18M148 66V38h20v28"/><path d="M112 66h17M120 66V27M115 34h10M118 27l2-15 2 15M114 38h12M117 31h6"/><path d="M2 55c14-9 28-8 39 2M137 54c12-8 25-8 38 1"/></svg>
+        </button>
+      </section>
+
+      <section class="progress-card">
+        <div class="progress-header">
+          <div><p>再会までの進み具合</p><span id="elapsedText">一歩ずつ、近づいてる</span></div>
+          <strong id="progressText">0%</strong>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-footer"><span id="departureLabel">2026.07.18</span><span id="reunionLabel">2026.11.24 14:00 JST</span></div>
+      </section>
+
+      <button class="note-card" id="shuffleNote" type="button" aria-label="メッセージを変える">
+        <span class="note-heart">♡</span>
+        <span class="note-copy"><small>TODAY'S NOTE</small><strong id="dailyNote">今日も、会える日に近づいてる。</strong></span>
+        <span class="note-arrow">↻</span>
+      </button>
+
+      <p class="footer-copy">ONE DAY CLOSER, EVERY DAY.</p>
+    </section>
+
+    <section class="screen screen-settings" id="settingsScreen" aria-labelledby="settingsTitle" hidden>
+      <header class="settings-header">
+        <button class="round-button back-button" id="backButton" type="button" aria-label="ホームへ戻る">
+          <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div><p>YOUR COUNTDOWN</p><h2 id="settingsTitle">設定</h2><span>♡</span></div>
+        <div class="header-spacer"></div>
+      </header>
+
+      <form id="settingsForm" novalidate>
+        <section class="settings-section">
+          <p class="settings-section-title">基本情報</p>
+          <div class="settings-card">
+            <label class="setting-row">
+              <span class="setting-icon pink-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.6-4 3-6 6.5-6s5.9 2 6.5 6"/></svg>
+              </span>
+              <span class="setting-copy"><strong>名前</strong><small>会える相手の名前</small></span>
+              <input id="partnerNameInput" type="text" maxlength="16" value="まゆ" required aria-label="名前" />
+            </label>
+            <label class="setting-row">
+              <span class="setting-icon blue-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11A6 6 0 1 0 6 10c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+              </span>
+              <span class="setting-copy"><strong>現在地</strong><small>相手が今いる場所</small></span>
+              <input id="locationInput" type="text" maxlength="24" value="デュッセルドルフ" aria-label="現在地" />
+            </label>
+            <label class="setting-row">
+              <span class="setting-icon pink-icon">
+                <svg viewBox="0 0 24 24"><path d="M5 5.5h14v14H5zM8 3v5M16 3v5M5 9h14"/></svg>
+              </span>
+              <span class="setting-copy"><strong>再会日</strong><small>日本時間（JST）で設定</small></span>
+              <input id="reunionDateInput" type="datetime-local" required aria-label="再会日" />
+            </label>
+            <label class="setting-row">
+              <span class="setting-icon blue-icon">
+                <svg viewBox="0 0 24 24"><path d="M5 5.5h14v14H5zM8 3v5M16 3v5M5 9h14"/></svg>
+              </span>
+              <span class="setting-copy"><strong>離れた日</strong><small>カウントを始めた日</small></span>
+              <input id="departureDateInput" type="date" required aria-label="離れた日" />
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <p class="settings-section-title">通知設定</p>
+          <div class="settings-card single-card">
+            <label class="setting-row toggle-row">
+              <span class="setting-icon blue-icon">
+                <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 8h18c0-1-3-1-3-8ZM10 21h4"/></svg>
+              </span>
+              <span class="setting-copy"><strong>リマインダー通知</strong><small>大切な節目の日をお知らせ</small></span>
+              <input class="toggle-input" id="notificationInput" type="checkbox" />
+              <span class="toggle" aria-hidden="true"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <p class="settings-section-title">表示設定</p>
+          <div class="settings-card single-card">
+            <div class="theme-row">
+              <span class="setting-icon pink-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0-18c5 0 8.5 3.4 8.5 7.5 0 2.5-1.5 4-3.5 4h-1.6c-1.1 0-1.7 1.2-1.1 2.1l.4.6C15.7 18.8 14.5 21 12 21Z"/><circle cx="8" cy="9" r="1"/><circle cx="12" cy="6.5" r="1"/><circle cx="16" cy="9" r="1"/><circle cx="8.5" cy="13" r="1"/></svg>
+              </span>
+              <span class="setting-copy"><strong>テーマカラー</strong><small>アプリの光の色</small></span>
+              <div class="theme-options" role="radiogroup" aria-label="テーマカラー">
+                <button class="theme-dot is-selected" type="button" data-theme="sunset" aria-label="サンセット" aria-pressed="true"></button>
+                <button class="theme-dot" type="button" data-theme="moon" aria-label="ムーン" aria-pressed="false"></button>
+                <button class="theme-dot" type="button" data-theme="aurora" aria-label="オーロラ" aria-pressed="false"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="settings-section install-section">
+          <p class="settings-section-title">スマホで使う</p>
+          <div class="install-card">
+            <span class="install-icon">⇧</span>
+            <div><strong>ホーム画面に追加</strong><p>iPhoneはSafariの共有ボタンから「ホーム画面に追加」。アプリのように全画面で開けます。</p></div>
+          </div>
+        </section>
+
+        <button class="save-button" type="submit"><span>♡</span> 保存する</button>
+        <p class="save-note" id="saveNote">設定はこの端末に保存されます。</p>
+      </form>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">保存しました</div>
+    <div class="runtime-status" id="runtimeStatus" role="status" aria-live="polite">JavaScriptを起動中… この表示が消えない場合はアプリ内プレビューでJSが停止されています</div>
+  </main>
+  
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
