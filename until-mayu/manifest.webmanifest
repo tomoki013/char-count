@@ -1,0 +1,14 @@
+{
+  "name": "Until Mayu",
+  "short_name": "Until Mayu",
+  "description": "まゆに会える日までを世界地図と一緒に数えるカウントダウン。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07152d",
+  "theme_color": "#07152d",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
